@@ -1,0 +1,46 @@
+package com.des;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+
+public class DES {
+	
+	private SecretKey secretKey;
+	private SecureRandom random;
+	private Cipher encryptCipher;
+	private Cipher decryptCipher;
+	private IvParameterSpec ivParams;
+	
+	public DES() {
+		try {
+			secretKey = KeyGenerator.getInstance("DES").generateKey();
+			// System.out.println(Base64.getEncoder().encodeToString(secretKey.getEncoded())); // Printing the key
+			random = new SecureRandom();
+			encryptCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+			decryptCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+			
+			byte[] initializationVector = new byte[encryptCipher.getBlockSize()];
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public String encrypt(String plainText)  {
+		return null;
+	}
+	
+	public String decrypt(String cipherText)  {
+		return null;
+	}
+	
+}
